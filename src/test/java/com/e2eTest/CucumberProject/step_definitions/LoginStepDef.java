@@ -1,6 +1,7 @@
 package com.e2eTest.CucumberProject.step_definitions;
 
 import com.e2eTest.CucumberProject.page_objects.LoginPage;
+import com.e2eTest.CucumberProject.utils.ConfigFileReader;
 //import com.e2eTest.CucumberProject.page_objects.LoginPage;
 import com.e2eTest.CucumberProject.utils.Setup;
 
@@ -11,15 +12,17 @@ import io.cucumber.java.en.When;
 public class LoginStepDef {
 
 	public LoginPage loginPage; 
+	public ConfigFileReader configFileReader ;
 
 	public LoginStepDef() {
 		loginPage = new LoginPage();
+		configFileReader = new ConfigFileReader();
 	}
 
 	/* login valid */
 	@Given("Je visite l'application NopCommerce")
 	public void jeVisiteLApplicationNopCommerce() {
-		Setup.getDriver().get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+		Setup.getDriver().get(configFileReader.getProperties("home.url"));
 	}
 
 	@When("Je saisis l'adresse mail {string}")

@@ -2,6 +2,8 @@
 Feature: Authentication
   ETQ utilisateur je souhaite m'authentifier
 
+
+
   @login-valide
   Scenario: Je souhaite tester la page LOGIN
     Given Je visite l'application NopCommerce
